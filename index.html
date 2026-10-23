@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zespresso — Zambian Espresso</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ink':       '#0C0806',
+            'ink-light': '#1A1108',
+            'gold':      '#C9A467',
+            'gold-muted':'#8A6F3A',
+            'cream':     '#F2EDE4',
+            'muted':     '#8A7A6A',
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Film grain texture overlay — the secret behind premium dark sites */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* Gold gradient text utility */
+    .gold-text {
+      background: linear-gradient(135deg, #C9A467 0%, #F0D080 50%, #C9A467 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Thin gold horizontal rule */
+    .gold-rule {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C9A467, transparent);
+    }
+  </style>
+</head>
+
+<body class="bg-ink text-cream font-sans antialiased">
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-ink/80 backdrop-blur-md border-b border-gold/10">
+    <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+
+      <a href="#" class="font-display text-xl tracking-[0.15em] text-cream hover:text-gold transition-colors uppercase">
+        Zespresso
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-10 text-xs font-medium uppercase tracking-widest text-muted">
+        <li><a href="#origin"    class="hover:text-gold transition-colors">Origin</a></li>
+        <li><a href="#menu"      class="hover:text-gold transition-colors">Menu</a></li>
+        <li><a href="#process"   class="hover:text-gold transition-colors">Process</a></li>
+        <li>
+          <a href="#visit"
+             class="border border-gold/50 text-gold px-5 py-2 text-xs uppercase tracking-widest hover:bg-gold hover:text-ink transition-all duration-300">
+            Visit Us
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <span class="block w-5 h-px bg-cream"></span>
+        <span class="block w-5 h-px bg-cream"></span>
+        <span class="block w-5 h-px bg-cream"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu"
+         class="md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+      <ul class="px-6 py-6 flex flex-col gap-5 text-sm uppercase tracking-widest text-muted border-t border-gold/10">
+        <li><a href="#origin"  class="hover:text-gold transition-colors">Origin</a></li>
+        <li><a href="#menu"    class="hover:text-gold transition-colors">Menu</a></li>
+        <li><a href="#process" class="hover:text-gold transition-colors">Process</a></li>
+        <li><a href="#visit"   class="text-gold">Visit Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+
+    <!-- Hero background photo -->
+    <img src="images/espresso-shot-dark-1.webp"
+         alt=""
+         class="absolute inset-0 w-full h-full object-cover object-center" />
+    <!-- Heavy dark overlay — photo is texture, not subject -->
+    <div class="absolute inset-0 bg-ink/85"></div>
+
+    <!-- Radial glow on top of overlay -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="w-[600px] h-[600px] rounded-full bg-gold/5 blur-[120px]"></div>
+    </div>
+
+    <div class="relative space-y-6 max-w-4xl" data-aos="fade-up" data-aos-duration="1000">
+      <p class="text-xs uppercase tracking-[0.4em] text-gold/70">Lusaka, Zambia · Est. 2021</p>
+
+      <h1 class="font-display font-light text-[clamp(4rem,12vw,9rem)] leading-none tracking-tight">
+        <span class="block gold-text">Zespresso</span>
+      </h1>
+
+      <p class="font-display italic text-xl md:text-2xl text-muted font-light max-w-md mx-auto leading-relaxed">
+        Single-origin espresso, grown in the highlands of Northern Zambia.
+      </p>
+
+      <hr class="gold-rule max-w-xs mx-auto my-6" />
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#menu"
+           class="bg-gold text-ink px-8 py-3.5 text-xs font-medium uppercase tracking-widest hover:bg-cream transition-colors duration-300">
+          Explore the Menu
+        </a>
+        <a href="#origin"
+           class="text-xs uppercase tracking-widest text-muted hover:text-gold transition-colors border-b border-muted/30 hover:border-gold pb-0.5">
+          Our Story &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted/40" data-aos="fade-up" data-aos-delay="600">
+      <span class="text-xs uppercase tracking-widest">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-muted/40 to-transparent"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       ORIGIN
+  ══════════════════════════════════════ -->
+  <section id="origin" class="py-32 border-t border-gold/10">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+
+      <div class="space-y-7" data-aos="fade-right">
+        <p class="text-xs uppercase tracking-[0.3em] text-gold/70">The Origin</p>
+        <h2 class="font-display font-light text-5xl md:text-6xl leading-tight text-cream">
+          From Zambian<br />
+          <em>highlands</em><br />
+          to your cup.
+        </h2>
+        <hr class="gold-rule max-w-[80px]" />
+        <p class="text-muted text-sm leading-relaxed max-w-sm">
+          The Muchinga Escarpment sits at 1,800 metres above sea level. The altitude, the volcanic
+          soil, and the equatorial light create conditions found nowhere else on the continent.
+          Our beans are grown there, and nowhere else.
+        </p>
+        <p class="text-muted text-sm leading-relaxed max-w-sm">
+          We work with a single cooperative of 28 families who have farmed this land for three
+          generations. Every bag is traceable to a specific farm and a specific harvest season.
+        </p>
+      </div>
+
+      <!-- Farm photo -->
+      <div class="relative" data-aos="fade-left" data-aos-delay="150">
+        <!-- Gold border frame — offset slightly for a gallery feel -->
+        <div class="absolute -inset-3 border border-gold/20"></div>
+        <div class="relative overflow-hidden">
+          <img src="images/coffee-farm-highland-1.webp"
+               alt="Coffee farm in the Zambian highlands"
+               class="w-full h-80 md:h-[480px] object-cover"
+               style="filter: saturate(0.7) contrast(1.1);" />
+          <!-- Subtle dark vignette at the edges -->
+          <div class="absolute inset-0"
+               style="background: radial-gradient(ellipse at center, transparent 50%, rgba(12,8,6,0.6) 100%);"></div>
+        </div>
+        <!-- Altitude badge -->
+        <div class="absolute bottom-6 left-6 bg-ink/80 backdrop-blur-sm border border-gold/30 px-4 py-2 space-y-0.5">
+          <p class="font-display text-gold text-xl font-light">1,800m</p>
+          <p class="text-muted text-xs uppercase tracking-widest">Muchinga Escarpment</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       MENU
+  ══════════════════════════════════════ -->
+  <section id="menu" class="py-32 bg-ink-light border-t border-gold/10">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="text-center space-y-4 mb-20" data-aos="fade-up">
+        <p class="text-xs uppercase tracking-[0.3em] text-gold/70">Signature Drinks</p>
+        <h2 class="font-display font-light text-5xl md:text-6xl text-cream">The Menu</h2>
+        <hr class="gold-rule max-w-[120px] mx-auto" />
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px bg-gold/10">
+
+        <div data-aos="fade-up" data-aos-delay="0"
+             class="bg-ink-light p-10 space-y-5 hover:bg-ink transition-colors duration-300 group">
+          <div class="w-8 h-px bg-gold group-hover:w-16 transition-all duration-500"></div>
+          <h3 class="font-display text-2xl font-light text-cream">Muchinga Black</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Pure single-origin espresso. No milk, no sugar — just the bean.
+            Notes of dark cherry, tobacco, and a long finish.
+          </p>
+          <p class="text-gold text-sm font-light">K45</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="120"
+             class="bg-ink-light p-10 space-y-5 hover:bg-ink transition-colors duration-300 group">
+          <div class="w-8 h-px bg-gold group-hover:w-16 transition-all duration-500"></div>
+          <h3 class="font-display text-2xl font-light text-cream">Zambezi White</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Double shot pulled long, with steamed full-cream milk from the Copperbelt.
+            Silky, round, and unhurried.
+          </p>
+          <p class="text-gold text-sm font-light">K60</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="240"
+             class="bg-ink-light p-10 space-y-5 hover:bg-ink transition-colors duration-300 group">
+          <div class="w-8 h-px bg-gold group-hover:w-16 transition-all duration-500"></div>
+          <h3 class="font-display text-2xl font-light text-cream">Cold Press</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            18 hours. Cold water. No heat applied — ever. The result is a concentrate
+            with almost no bitterness and twice the depth.
+          </p>
+          <p class="text-gold text-sm font-light">K70</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════ -->
+  <section id="process" class="py-32 border-t border-gold/10">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="text-center space-y-4 mb-20" data-aos="fade-up">
+        <p class="text-xs uppercase tracking-[0.3em] text-gold/70">How We Work</p>
+        <h2 class="font-display font-light text-5xl md:text-6xl text-cream">The Process</h2>
+        <hr class="gold-rule max-w-[120px] mx-auto" />
+      </div>
+
+      <!-- Wide photo banner above the steps -->
+      <div class="relative overflow-hidden mb-16 h-48 md:h-64" data-aos="fade-up">
+        <img src="images/coffee-beans-roasting-1.webp"
+             alt="Coffee beans being roasted"
+             class="w-full h-full object-cover"
+             style="filter: saturate(0.5) contrast(1.2);" />
+        <div class="absolute inset-0 bg-ink/60"></div>
+        <!-- Thin gold rule overlay -->
+        <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"></div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+
+        <div data-aos="fade-up" data-aos-delay="0" class="space-y-4">
+          <p class="font-display text-6xl font-light text-gold/20">01</p>
+          <h3 class="font-display text-xl font-light text-cream">Harvest</h3>
+          <p class="text-muted text-xs leading-relaxed">Hand-picked at peak ripeness, only once a year, between May and July.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" class="space-y-4">
+          <p class="font-display text-6xl font-light text-gold/20">02</p>
+          <h3 class="font-display text-xl font-light text-cream">Process</h3>
+          <p class="text-muted text-xs leading-relaxed">Washed and dried on raised beds for 21 days. No mechanical dryers.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" class="space-y-4">
+          <p class="font-display text-6xl font-light text-gold/20">03</p>
+          <h3 class="font-display text-xl font-light text-cream">Roast</h3>
+          <p class="text-muted text-xs leading-relaxed">Small-batch roasted in Lusaka within 30 days of arrival. Medium-dark only.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300" class="space-y-4">
+          <p class="font-display text-6xl font-light text-gold/20">04</p>
+          <h3 class="font-display text-xl font-light text-cream">Pull</h3>
+          <p class="text-muted text-xs leading-relaxed">9 bars of pressure. 25 seconds. The same every single time.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       VISIT CTA
+  ══════════════════════════════════════ -->
+  <section id="visit" class="py-32 border-t border-gold/10 relative overflow-hidden">
+    <!-- Background photo -->
+    <img src="images/coffee-farm-highland-2.webp"
+         alt=""
+         class="absolute inset-0 w-full h-full object-cover"
+         style="filter: saturate(0.4);" />
+    <div class="absolute inset-0 bg-ink/90"></div>
+
+    <div class="relative max-w-2xl mx-auto px-6 text-center space-y-8" data-aos="fade-up">
+      <p class="text-xs uppercase tracking-[0.3em] text-gold">Find Us</p>
+      <h2 class="font-display font-light text-5xl md:text-7xl leading-tight text-cream">
+        Come for<br /><em class="gold-text">the coffee.</em><br />Stay for the silence.
+      </h2>
+      <hr class="gold-rule max-w-[120px] mx-auto" />
+      <div class="text-cream/60 text-sm space-y-1">
+        <p>Cairo Road, Lusaka · Mon–Sat 7am – 6pm</p>
+        <p>hello@zespresso.zm</p>
+      </div>
+      <a href="mailto:hello@zespresso.zm"
+         class="inline-block border border-gold/50 text-gold px-10 py-4 text-xs uppercase tracking-widest hover:bg-gold hover:text-ink transition-all duration-300">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="border-t border-gold/10 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted uppercase tracking-widest">
+      <p class="font-display text-base tracking-[0.2em] text-cream/50">Zespresso</p>
+      <p>&copy; 2026 Zespresso. Lusaka, Zambia.</p>
+      <div class="flex gap-6">
+        <a href="#origin"  class="hover:text-gold transition-colors">Origin</a>
+        <a href="#menu"    class="hover:text-gold transition-colors">Menu</a>
+        <a href="#process" class="hover:text-gold transition-colors">Process</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const btn  = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      const open = menu.style.maxHeight && menu.style.maxHeight !== '0px';
+      menu.style.maxHeight = open ? '0px' : menu.scrollHeight + 'px';
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 900, once: true, offset: 80 });</script>
+
+</body>
+</html>
